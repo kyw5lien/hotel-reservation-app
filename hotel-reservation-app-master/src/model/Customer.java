@@ -10,7 +10,7 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String email;
-
+    
     /**
      * The constructor of the Customer Account class.
      * @param firstName the customer account's first name.
@@ -23,6 +23,7 @@ public class Customer {
         if (EmailValidator.isValid(email))
             this.email = email;
     }
+
     public String getEmail() {
         return email;
     }
@@ -33,10 +34,10 @@ public class Customer {
      */
     @Override
     public String toString() {
-        return Customer.class.getSimpleName() + "{"
-                +"firstName:'" + firstName + '\'' +
-                ", lastName:'" + lastName + '\'' +
-                ", email:'" + email + '\'' +
-                '}';
+        return Customer.class.getSimpleName() +"{"
+                +"firstName:'" + firstName + '\''
+                +", lastName:'" + lastName + '\''
+                +", email:'" + email + '\''
+                +'}';
     }
 }
