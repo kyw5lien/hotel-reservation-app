@@ -1,7 +1,6 @@
 package model;
 
 import helperclasses.EmailValidator;
-import java.util.InputMismatchException;
 
 /**
  *  Customer Account class: models information on a Hotel Customer Account; validating the customer account's e-mail included.
@@ -11,10 +10,9 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String email;
-    
+
     /**
      * The constructor of the Customer Account class.
-     *
      * @param firstName the customer account's first name.
      * @param lastName  the customer account's last name.
      * @param email     the provided e-mail for the customer account.
@@ -25,14 +23,18 @@ public class Customer {
         if (EmailValidator.isValid(email))
             this.email = email;
     }
+    public String getEmail() {
+        return email;
+    }
+
     /**
      * Provides information on the Customer's account.
      * @return a String representing the Customer account's information.
      */
     @Override
     public String toString() {
-        return "Customer{" +
-                "firstName:'" + firstName + '\'' +
+        return Customer.class.getSimpleName() + "{"
+                +"firstName:'" + firstName + '\'' +
                 ", lastName:'" + lastName + '\'' +
                 ", email:'" + email + '\'' +
                 '}';
