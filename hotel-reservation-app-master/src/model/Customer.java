@@ -1,9 +1,9 @@
 package model;
-
+import java.lang.reflect.Field;
 import helperclasses.EmailValidator;
 
 /**
- *  Customer class: models information of a Customer; validating the customer's e-mail included.
+ * Customer class: models information of a Customer; validating the customer's e-mail included.
  * @author kyw5lien
  */
 public class Customer {
@@ -26,7 +26,7 @@ public class Customer {
 
     /**
      * A Getter Method to retrieve the Customer's e-mail.
-     * @return  the customer's e-mail.
+     * @return the customer's e-mail.
      */
     public String getEmail() {
         return email;
@@ -38,10 +38,12 @@ public class Customer {
      */
     @Override
     public String toString() {
+        int i = 0;
+        Field[] declaredFields = Customer. class.getDeclaredFields();
         return Customer.class.getSimpleName() +"{"
-                +"firstName:'" + firstName + '\''
-                +", lastName:'" + lastName + '\''
-                +", email:'" + email + '\''
-                +'}';
+                +declaredFields[i].getName()  +":" +'\'' +Customer.this.firstName +'\'' +","
+                +declaredFields[++i].getName() +":" +'\''  +Customer.this.lastName +'\'' +","
+                +declaredFields[++i].getName() +":" +'\'' +Customer.this.email  +'\''
+        +'}';
     }
 }
