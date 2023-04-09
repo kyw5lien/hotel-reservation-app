@@ -7,8 +7,8 @@ import helperclasses.EmailValidator;
  * @author kyw5lien
  */
 public class Customer {
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
     private String email;
 
     /**
