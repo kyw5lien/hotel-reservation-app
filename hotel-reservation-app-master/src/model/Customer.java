@@ -39,11 +39,11 @@ public class Customer {
     @Override
     public String toString() {
         int i = 0;
-        Field[] declaredFields = Customer. class.getDeclaredFields();
-        return Customer.class.getSimpleName() +"{"
-                +declaredFields[i].getName()  +":" +'\'' +Customer.this.firstName +'\'' +","
-                +declaredFields[++i].getName() +":" +'\''  +Customer.this.lastName +'\'' +","
-                +declaredFields[++i].getName() +":" +'\'' +Customer.this.email  +'\''
+        Field[] declaredFields = this.getClass().getDeclaredFields();
+        return this.getClass().getSimpleName() +"{"
+                +declaredFields[i].getName() +":" +'\'' +this.firstName +'\'' +","
+                +declaredFields[++i].getName() +":" +'\'' +this.lastName +'\'' +","
+                +declaredFields[++i].getName() +":" +'\'' +this.email +'\''
         +'}';
     }
 }
