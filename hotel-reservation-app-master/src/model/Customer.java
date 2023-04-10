@@ -1,6 +1,8 @@
 package model;
-import java.lang.reflect.Field;
+
 import helperclasses.EmailValidator;
+
+import java.lang.reflect.Field;
 
 /**
  * Customer class: models information of a Customer; validating the customer's e-mail included.
@@ -38,12 +40,24 @@ public class Customer {
      */
     @Override
     public String toString() {
-        int i = 0;
-        Field[] declaredFields = this.getClass().getDeclaredFields();
-        return this.getClass().getSimpleName() +"{"
-                +declaredFields[i].getName() +":" +'\'' +this.firstName +'\'' +","
-                +declaredFields[++i].getName() +":" +'\'' +this.lastName +'\'' +","
-                +declaredFields[++i].getName() +":" +'\'' +this.email +'\''
-        +'}';
+        Class<?> c = this.getClass();
+        Field[] f = c.getDeclaredFields();
+        String s = c.getSimpleName();
+
+        s+="{";
+        for(int i = 0; i<f.length; i++){
+            f[i].setAccessible(true);
+            try {
+                s += f[i].getName() +":" +'\'' +f[i].get(this) +'\'';
+                if(i<f.length-1) {
+                    s+=",";
+                }
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        s += "}";
+        
+        return s;
     }
 }
