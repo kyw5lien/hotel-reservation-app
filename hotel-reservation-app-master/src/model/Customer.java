@@ -56,7 +56,7 @@ public class Customer {
                 throw new RuntimeException(e);
             }
         }
-        s += "}";
+        s+="}";
         
         return s;
     }
