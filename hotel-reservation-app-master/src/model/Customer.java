@@ -1,7 +1,6 @@
 package model;
 
 import helperclasses.EmailValidator;
-
 import java.lang.reflect.Field;
 
 /**
