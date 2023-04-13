@@ -11,10 +11,10 @@ public class EmailValidator {
     private static Pattern pattern = Pattern.compile(emailRegEx);
 
     /**
-     * Checks if the e-mail provided is in the correct format (i.e., name@domain).
-     * @param email the e-mail to be checked.
-     * @return true if the e-mail provided is in the correct format; false if otherwise.
-     * @author
+     * Checks if the e-mail provided matches the RegEx (i.e., name@domain.com).
+     * @param email the e-mail to be matched.
+     * @return true if the e-mail provided matches the RegEx; false if otherwise.
+     * @author kyw5lien
      */
     public static boolean isValid(String email) {
         return pattern.matcher(email).matches();
