@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import java.util.Random;
 
 /**
- * Models information on a Customer; validating the customer's e-mail included.
+ * Models information of a Customer; validating the customer's e-mail included.
  * @author kyw5lien
  * @see EmailValidator
  */
@@ -28,7 +28,7 @@ public class Customer {
     }
 
     /**
-     * A Getter Method to retrieve the Customer's e-mail.
+     * Getter Method to retrieve the Customer's e-mail.
      * @return the customer's e-mail.
      */
     public String getEmail() {
@@ -36,7 +36,7 @@ public class Customer {
     }
 
     /**
-     * Provides a String object representing the Customer's information.
+     * Generates a String object representing the Customer's information.
      * @return a String representing the Customer's information.
      */
     @Override
