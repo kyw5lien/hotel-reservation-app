@@ -1,18 +1,15 @@
 package model;
 
-import helperclasses.EmailValidator;
 import java.lang.reflect.Field;
-import java.util.Random;
 
 /**
- * Models information of a Customer; validating the customer's e-mail included.
+ * Models information of a Customer; the customer's first, last name, and e-mail.
  * @author kyw5lien
- * @see EmailValidator
  */
 public class Customer {
     private final String firstName;
     private final String lastName;
-    private String email;
+    private final String email;
 
     /**
      * The constructor of the Customer class.
@@ -23,8 +20,7 @@ public class Customer {
     public Customer(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
-        if (EmailValidator.isValid(email))
-            this.email = email;
+        this.email = email;
     }
 
     /**
