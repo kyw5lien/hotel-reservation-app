@@ -1,29 +1,27 @@
 package model;
 
+import java.lang.reflect.Field;
+
 /**
- *  Hotel's Room class: models information about the hotel's room
- *  properties such as room number, it's price, type and availability.
- *
- * @author
+ * Models information of a Hotel Room; the Hotel Room number, it's price, type, and availability.
+ * @author kyw5lien
+ * @see RoomType
  */
 public class Room implements IRoom {
-    // Fields.
     private String roomNumber;
     private Double roomPrice;
     private RoomType roomType;
     private boolean isAvailable;
 
-    // Constructors.
-    public Room() {
-        // Emty constructor ...
-    }
+    public Room(){
 
+    }
     /**
      * The constructor of the Hotel's Room class.
      * @param roomNumber the room number.
      * @param roomPrice the room price.
-     * @param roomType the type of the room (e.g: single's / doubles).
-     * @param isAvailable the room's availability.
+     * @param roomType the room type (e.g: SINGLE / DOUBLES).
+     * @param isAvailable the room availability.
      */
     public Room(String roomNumber, Double roomPrice, RoomType roomType, boolean isAvailable) {
         this.roomNumber = roomNumber;
@@ -32,7 +30,6 @@ public class Room implements IRoom {
         this.isAvailable = isAvailable;
     }
 
-    // Getters.
     public String getRoomNumber(){
         return roomNumber;
     }
@@ -49,7 +46,6 @@ public class Room implements IRoom {
         return isAvailable;
     }
 
-    // Setters.
     public void setRoomNumber(String roomNumber) {
         this.roomNumber = roomNumber;
     }
@@ -66,48 +62,33 @@ public class Room implements IRoom {
         isAvailable = available;
     }
 
-    // toString Method.
     @Override
     public String toString() {
-        return "Room{" +
-                "roomNumber:'" + roomNumber + '\'' +
-                ", roomPrice:" + roomPrice +
-                ", roomType:" + roomType +
-                ", isAvailable:" + isAvailable +
-                '}';
-    }
+        Class<?> c = this.getClass();
+        Field[] f = c.getDeclaredFields();
+        String s = c.getSimpleName();
 
-    /**
-     * Provides information about the Hotel's Room.
-     * @return a String representing the Hotel's Room information.
-     */
-    /*
-    @Override
-    public String toString() {
-        String roomDescription = this.getClass().getSimpleName() +
-                "\n" +
-                "\t" +"--------------------------------------" +
-                "\n" +
-                "\t" + "Number: " + roomNumber + "\n" +
-                "\t" + "Price: " + roomPrice + "\n" +
-                "\t" + "Type: " + roomType + "\n" +
-                "\t" + "Available: ";
-
-        if(isAvailable) {
-            roomDescription +=  "Yes" + "\n";
-        } else {
-            roomDescription += "No" + "\n";
+        s+="{";
+        for(int i = 0; i<f.length; i++){
+            f[i].setAccessible(true);
+            try {
+                s += f[i].getName() +":" +'\'' +f[i].get(this) +'\'';
+                if(i<f.length-1) {
+                    s+=",";
+                }
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
         }
+        s += "}";
 
-        return roomDescription;
+        return s;
     }
-    */
 
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
-
         Room room = (Room) object;
 
         return getRoomNumber().equals(room.getRoomNumber());
